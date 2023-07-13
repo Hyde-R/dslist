@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.maxwell04.dslist.dto.GameDTO;
 import com.maxwell04.dslist.dto.GameMinDTO;
 import com.maxwell04.dslist.entities.Game;
-import com.maxwell04.dslist.entities.GameList;
+import com.maxwell04.dslist.projections.GameMinProjection;
 import com.maxwell04.dslist.repositories.GameRepository;
 
 //Lógica de serviço da aplicação
@@ -33,5 +33,14 @@ public class GameService {
 		List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
 		return dto;
 	}
+	
+	@Transactional(readOnly = true)
+	public List<GameMinDTO> findByList(Long listId){
+		List<GameMinProjection> result = gameRepository.searchByList(listId);
+		List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
+		return dto;
+	}
+	
+	
 
 }

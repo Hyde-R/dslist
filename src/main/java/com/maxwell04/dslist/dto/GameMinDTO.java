@@ -1,6 +1,7 @@
 package com.maxwell04.dslist.dto;
 
 import com.maxwell04.dslist.entities.Game;
+import com.maxwell04.dslist.projections.GameMinProjection;
 
 public class GameMinDTO {
 	private Long id;
@@ -12,6 +13,14 @@ public class GameMinDTO {
 	//Exibir somente as informações fundamentais da classe game
 	
 	public GameMinDTO() {
+	}
+	
+	public GameMinDTO(GameMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		year = projection.getYear();
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
 	}
 
 	public GameMinDTO(Game entity) {
