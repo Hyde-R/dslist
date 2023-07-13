@@ -9,6 +9,8 @@ public class GameMinDTO {
 	private String imgUrl;
 	private String shortDescription;
 	
+	//Exibir somente as informações fundamentais da classe game
+	
 	public GameMinDTO() {
 	}
 
